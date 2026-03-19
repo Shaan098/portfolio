@@ -1,387 +1,335 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shaan Saurav - Full Stack Developer</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shaan Saurav - Full Stack Developer Portfolio</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar fixed top-0 w-full z-50">
-        <div class="max-width">
-            <div class="nav-container">
-                <div class="logo">Shaan.</div>
-                <div class="nav-menu">
-                    <a href="#about" class="nav-link">About</a>
-                    <a href="#skills" class="nav-link">Skills</a>
-                    <a href="#projects" class="nav-link">Projects</a>
-                    <a href="#experience" class="nav-link">Experience</a>
-                    <a href="#contact" class="nav-link">Contact</a>
-                </div>
-                <div class="nav-controls">
-                    <button class="theme-toggle" id="themeToggle">
-                        <i class="fas fa-sun"></i>
-                    </button>
-                    <button class="mobile-menu-btn" id="mobileMenuBtn">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
+  <!-- Loading Screen -->
+  <div id="loadingScreen" class="loading-screen">
+    <div class="spinner"></div>
+    <p>Loading Portfolio...</p>
+  </div>
 
-    <!-- Scroll Progress Bar -->
-    <div class="scroll-progress" id="scrollProgress"></div>
-
-    <!-- Hero Section -->
-    <section id="hero" class="hero section-padding">
-        <div class="max-width">
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    <span class="typing-text" id="typingText">Full Stack Developer</span>
-                </h1>
-                <p class="hero-subtitle">Building scalable web applications and solving real-world problems with code</p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">View Projects</a>
-                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
-                </div>
-                <div class="social-links">
-                    <a href="https://github.com/Shaan098" target="_blank" title="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://linkedin.com/in/shaan-saurav" target="_blank" title="LinkedIn">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="mailto:shaansaurav633@gmail.com" title="Email">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about section-padding">
-        <div class="max-width">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <p class="about-text">
-                    B.Tech CSE student at Lovely Professional University, passionate about full-stack development and problem solving. 
-                    Experience with React, Node.js, MongoDB, and cloud technologies. I love building scalable applications and continuously learning new technologies.
-                </p>
-                <div class="tech-stack">
-                    <h3>Tech Stack</h3>
-                    <div class="tech-list">
-                        <span class="tech-badge">React</span>
-                        <span class="tech-badge">Node.js</span>
-                        <span class="tech-badge">MongoDB</span>
-                        <span class="tech-badge">JavaScript</span>
-                        <span class="tech-badge">HTML5</span>
-                        <span class="tech-badge">CSS3</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills section-padding">
-        <div class="max-width">
-            <h2 class="section-title">Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Languages</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">C++</span>
-                        <span class="skill-item">JavaScript</span>
-                        <span class="skill-item">C</span>
-                        <span class="skill-item">PHP</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Frontend</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">React</span>
-                        <span class="skill-item">HTML5</span>
-                        <span class="skill-item">CSS3</span>
-                        <span class="skill-item">Tailwind CSS</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Backend</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">Node.js</span>
-                        <span class="skill-item">Express</span>
-                        <span class="skill-item">MongoDB</span>
-                        <span class="skill-item">JWT</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Tools</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">Git</span>
-                        <span class="skill-item">VS Code</span>
-                        <span class="skill-item">Postman</span>
-                        <span class="skill-item">AWS</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects section-padding">
-        <div class="max-width">
-            <h2 class="section-title">Projects</h2>
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="fullstack">Full Stack</button>
-                <button class="filter-btn" data-filter="frontend">Frontend</button>
-                <button class="filter-btn" data-filter="backend">Backend</button>
-            </div>
-            <div class="projects-grid" id="projectsGrid">
-                <!-- Projects will be populated by JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="experience section-padding">
-        <div class="max-width">
-            <h2 class="section-title">Experience</h2>
-            <div class="experience-timeline">
-                <div class="experience-item">
-                    <div class="experience-marker"></div>
-                    <div class="experience-content glass">
-                        <h3>Virtual Software Engineer</h3>
-                        <p class="company">Electronic Arts (Forage) • 2024</p>
-                        <p class="description">Completed a virtual software engineering experience focusing on game development and system design.</p>
-                    </div>
-                </div>
-                <div class="experience-item">
-                    <div class="experience-marker"></div>
-                    <div class="experience-content glass">
-                        <h3>AWS APAC Solutions Architect</h3>
-                        <p class="company">Amazon Web Services (Forage) • 2024</p>
-                        <p class="description">Completed AWS Solutions Architecture virtual experience focusing on cloud infrastructure and design.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Achievements Section -->
-    <section id="achievements" class="achievements section-padding">
-        <div class="max-width">
-            <h2 class="section-title">Achievements</h2>
-            <div class="achievements-grid">
-                <div class="achievement-card glass">
-                    <div class="achievement-icon">🏆</div>
-                    <h3>150+ LeetCode Problems</h3>
-                    <p>Successfully solved over 150 coding problems on LeetCode</p>
-                </div>
-                <div class="achievement-card glass">
-                    <div class="achievement-icon">⭐</div>
-                    <h3>77%+ Acceptance Rate</h3>
-                    <p>Maintained an acceptance rate above 77% on competitive programming</p>
-                </div>
-                <div class="achievement-card glass">
-                    <div class="achievement-icon">🎖️</div>
-                    <h3>HackerRank Badges</h3>
-                    <p>Earned multiple badges across programming languages</p>
-                </div>
-                <div class="achievement-card glass">
-                    <div class="achievement-icon">🚀</div>
-                    <h3>Full Stack Applications</h3>
-                    <p>Developed and deployed multiple full-stack applications</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- GitHub Stats Section -->
-    <section id="github" class="github-stats section-padding">
-        <div class="max-width">
-            <h2 class="section-title">GitHub Activity</h2>
-            <div class="github-container glass">
-                <div class="github-header">
-                    <img id="githubAvatar" src="" alt="Avatar" class="github-avatar">
-                    <div>
-                        <h3>GitHub Stats</h3>
-                        <p>github.com/Shaan098</p>
-                    </div>
-                </div>
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <p class="stat-label">Followers</p>
-                        <p class="stat-number" id="followers">-</p>
-                    </div>
-                    <div class="stat-card">
-                        <p class="stat-label">Following</p>
-                        <p class="stat-number" id="following">-</p>
-                    </div>
-                    <div class="stat-card">
-                        <p class="stat-label">Repositories</p>
-                        <p class="stat-number" id="repositories">-</p>
-                    </div>
-                    <div class="stat-card">
-                        <p class="stat-label">Contributions</p>
-                        <p class="stat-number" id="contributions">-</p>
-                    </div>
-                </div>
-                <a href="https://github.com/Shaan098" target="_blank" class="btn btn-primary">
-                    <i class="fab fa-github"></i> Visit GitHub Profile
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Certifications Section -->
-    <section id="certifications" class="certifications section-padding">
-        <div class="max-width">
-            <h2 class="section-title">Certifications</h2>
-            <div class="certifications-grid">
-                <div class="cert-card glass">
-                    <div class="cert-icon">☁️</div>
-                    <h3>NPTEL Cloud Computing</h3>
-                    <p class="cert-issuer">IIT Kharagpur</p>
-                    <p class="cert-date">2024</p>
-                </div>
-                <div class="cert-card glass">
-                    <div class="cert-icon">🌐</div>
-                    <h3>Oracle Cloud Infrastructure</h3>
-                    <p class="cert-issuer">Oracle Developer Professional</p>
-                    <p class="cert-date">2024</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education" class="education section-padding">
-        <div class="max-width">
-            <h2 class="section-title">Education</h2>
-            <div class="education-card glass">
-                <h3>Bachelor of Technology - Computer Science & Engineering</h3>
-                <p class="uni-name">Lovely Professional University (LPU), Punjab</p>
-                <p class="duration">2022 - 2026</p>
-                <div class="coursework">
-                    <h4>Relevant Coursework:</h4>
-                    <div class="course-list">
-                        <span>Data Structures</span>
-                        <span>Web Development</span>
-                        <span>Database Management</span>
-                        <span>Object-Oriented Programming</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Resume Download Section -->
-    <section id="resume" class="resume section-padding">
-        <div class="max-width">
-            <h2 class="section-title">Download Resume</h2>
-            <div class="resume-container">
-                <div class="resume-content glass">
-                    <div class="resume-header">
-                        <div class="resume-icon">
-                            <i class="fas fa-file-pdf"></i>
-                        </div>
-                        <div>
-                            <h3>Resume & CV</h3>
-                            <p>Up-to-date professional document</p>
-                        </div>
-                    </div>
-                    <div class="resume-features">
-                        <div class="feature">
-                            <span class="feature-dot"></span>
-                            <p><strong>Comprehensive Profile</strong><br>All skills, experience, and achievements</p>
-                        </div>
-                        <div class="feature">
-                            <span class="feature-dot"></span>
-                            <p><strong>ATS Optimized</strong><br>Formatted for Applicant Tracking Systems</p>
-                        </div>
-                        <div class="feature">
-                            <span class="feature-dot"></span>
-                            <p><strong>Recruiter Ready</strong><br>Professional layout and formatting</p>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary" id="downloadResumeBtn">
-                        <i class="fas fa-download"></i> Download Resume
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact section-padding">
-        <div class="max-width">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-item glass">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h3>Email</h3>
-                            <a href="mailto:shaansaurav633@gmail.com">shaansaurav633@gmail.com</a>
-                        </div>
-                    </div>
-                    <div class="contact-item glass">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h3>Phone</h3>
-                            <a href="tel:+916204566381">+91 6204566381</a>
-                        </div>
-                    </div>
-                    <div class="contact-item glass">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h3>Location</h3>
-                            <p>Punjab, India</p>
-                        </div>
-                    </div>
-                </div>
-                <form class="contact-form glass" id="contactForm">
-                    <input type="text" id="contactName" placeholder="Your Name" required>
-                    <input type="email" id="contactEmail" placeholder="Your Email" required>
-                    <textarea id="contactMessage" placeholder="Your Message" rows="5" required></textarea>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                    <div class="form-message" id="formMessage"></div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- ChatBot -->
-    <div class="chatbot">
-        <button class="chatbot-toggle" id="chatbotToggle">
-            <i class="fas fa-comments"></i>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-content">
+        <div class="logo">Shaan Saurav</div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
-        <div class="chatbot-window glass" id="chatbotWindow">
-            <div class="chatbot-header">
-                <h3>Chat with me!</h3>
-                <button class="chatbot-close" id="chatbotClose">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="chatbot-messages" id="chatbotMessages"></div>
-            <div class="chatbot-quick-replies" id="quickReplies"></div>
-            <div class="chatbot-input">
-                <input type="text" id="chatbotInput" placeholder="Type a message...">
-                <button id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
-            </div>
-        </div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#certifications">Certifications</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><button class="theme-toggle" id="themeToggle">☀️</button></li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
 
-    <script src="script.js"></script>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="avatar">
+          <div class="avatar-circle" data-animation="scaleIn">SS</div>
+        </div>
+        <h1 class="hero-title" data-animation="fadeInUp">Shaan Saurav</h1>
+        <h2 class="hero-subtitle" id="typewriter"></h2>
+        <p class="hero-tagline">🚀 Building scalable web applications and solving real-world problems with code.</p>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">📂 View Projects</a>
+          <a href="#contact" class="btn btn-gradient">📧 Contact Me</a>
+        </div>
+        <div class="social-icons">
+          <a href="https://github.com/Shaan098" target="_blank" rel="noopener noreferrer" class="social-icon">GitHub</a>
+          <a href="https://linkedin.com/in/shaan-saurav" target="_blank" rel="noopener noreferrer" class="social-icon">LinkedIn</a>
+          <a href="mailto:shaansaurav633@gmail.com" class="social-icon">Email</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section about-section">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-grid">
+        <div class="about-content">
+          <p>👨‍💻 I'm a <span class="highlight">B.Tech Computer Science Engineering</span> student at <span class="highlight">Lovely Professional University</span>, passionate about building scalable and efficient web applications.</p>
+          <p>🚀 With hands-on experience in the MERN stack (MongoDB, Express, React, Node.js), I specialize in developing full-stack solutions that combine robust backend architecture with intuitive user interfaces.</p>
+          <p>💡 Beyond coding, I'm interested in system design, cloud technologies, and competitive programming. I believe in writing clean, maintainable code and following best practices in software development.</p>
+          <div class="stats-grid">
+            <div class="stat-card" data-animation="fadeInUp">
+              <h4>150+</h4>
+              <p>LeetCode Problems</p>
+            </div>
+            <div class="stat-card" data-animation="fadeInUp">
+              <h4>77%+</h4>
+              <p>Acceptance Rate</p>
+            </div>
+          </div>
+        </div>
+        <div class="tech-stack">
+          <h3>Tech Stack</h3>
+          <div class="tech-icons">
+            <div class="tech-item" data-animation="scaleIn"><span>⚛️</span><p>React</p></div>
+            <div class="tech-item" data-animation="scaleIn"><span>🟢</span><p>Node.js</p></div>
+            <div class="tech-item" data-animation="scaleIn"><span>🍃</span><p>MongoDB</p></div>
+            <div class="tech-item" data-animation="scaleIn"><span>☁️</span><p>AWS</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section skills-section">
+    <div class="container">
+      <h2 class="section-title">Skills & Expertise</h2>
+      <div class="skills-grid">
+        <div class="skill-card" data-animation="fadeInUp">
+          <h3>Languages</h3>
+          <div class="skill-list">
+            <span class="skill-tag">C++</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">C</span>
+            <span class="skill-tag">PHP</span>
+          </div>
+        </div>
+        <div class="skill-card" data-animation="fadeInUp">
+          <h3>Frontend</h3>
+          <div class="skill-list">
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3</span>
+            <span class="skill-tag">Tailwind</span>
+            <span class="skill-tag">Bootstrap</span>
+          </div>
+        </div>
+        <div class="skill-card" data-animation="fadeInUp">
+          <h3>Backend</h3>
+          <div class="skill-list">
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Express</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">JWT</span>
+          </div>
+        </div>
+        <div class="skill-card" data-animation="fadeInUp">
+          <h3>Tools & Platforms</h3>
+          <div class="skill-list">
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">VS Code</span>
+            <span class="skill-tag">Postman</span>
+            <span class="skill-tag">AWS</span>
+            <span class="skill-tag">Docker</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section projects-section">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-subtitle">Explore some of my best work</p>
+      <div class="projects-grid">
+        <div class="project-card" data-animation="fadeInUp">
+          <div class="project-icon">🖥️</div>
+          <h3>Online Multi-Language Compiler</h3>
+          <p>A full-stack IDE allowing users to write, compile, and execute code in multiple languages.</p>
+          <div class="project-tech">
+            <span>React</span>
+            <span>Node.js</span>
+            <span>Express</span>
+            <span>MongoDB</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Shaan098/multi-language-compiler" target="_blank" class="btn-link">📂 Code</a>
+            <a href="https://compiler-client-9wha.vercel.app/" target="_blank" class="btn-link">🔗 Live</a>
+          </div>
+        </div>
+
+        <div class="project-card" data-animation="fadeInUp">
+          <div class="project-icon">🔍</div>
+          <h3>AR Educational Content Viewer</h3>
+          <p>Interactive AR platform for visualizing educational content with 3D model integration.</p>
+          <div class="project-tech">
+            <span>React</span>
+            <span>3D Models</span>
+            <span>AR Technology</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Shaan098/ar-viewer" target="_blank" class="btn-link">📂 Code</a>
+          </div>
+        </div>
+
+        <div class="project-card" data-animation="fadeInUp">
+          <div class="project-icon">📅</div>
+          <h3>Appointment Scheduling System</h3>
+          <p>Complete appointment management system with role-based access control and notifications.</p>
+          <div class="project-tech">
+            <span>React</span>
+            <span>Express</span>
+            <span>MongoDB</span>
+            <span>JWT</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Shaan098/appointment-system" target="_blank" class="btn-link">📂 Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="section experience-section">
+    <div class="container">
+      <h2 class="section-title">Experience</h2>
+      <div class="experience-timeline">
+        <div class="timeline-item" data-animation="fadeInUp">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h3>Virtual Software Engineer</h3>
+            <p class="company">Electronic Arts (Forage) • 2024</p>
+            <p>Completed virtual software engineering experience focusing on game development and system design architecture.</p>
+          </div>
+        </div>
+        <div class="timeline-item" data-animation="fadeInUp">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h3>AWS APAC Solutions Architect</h3>
+            <p class="company">Amazon Web Services (Forage) • 2024</p>
+            <p>Completed AWS Solutions Architecture virtual experience focusing on cloud infrastructure and scalable design.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements Section -->
+  <section id="achievements" class="section achievements-section">
+    <div class="container">
+      <h2 class="section-title">Achievements</h2>
+      <div class="achievements-grid">
+        <div class="achievement-card" data-animation="fadeInUp">
+          <div class="achievement-icon">🏆</div>
+          <h3>150+ LeetCode Problems</h3>
+          <p>Successfully solved over 150 coding problems with consistent practice and optimization.</p>
+        </div>
+        <div class="achievement-card" data-animation="fadeInUp">
+          <div class="achievement-icon">⭐</div>
+          <h3>77%+ Acceptance Rate</h3>
+          <p>Maintained an acceptance rate above 77% on competitive programming platforms.</p>
+        </div>
+        <div class="achievement-card" data-animation="fadeInUp">
+          <div class="achievement-icon">🎖️</div>
+          <h3>HackerRank Badges</h3>
+          <p>Earned multiple badges across various programming languages and problem domains.</p>
+        </div>
+        <div class="achievement-card" data-animation="fadeInUp">
+          <div class="achievement-icon">🚀</div>
+          <h3>Full Stack Applications</h3>
+          <p>Developed and deployed multiple full-stack applications using MERN stack in production.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section id="certifications" class="section certifications-section">
+    <div class="container">
+      <h2 class="section-title">Certifications</h2>
+      <div class="certifications-grid">
+        <div class="cert-card" data-animation="fadeInUp">
+          <div class="cert-icon">☁️</div>
+          <h3>NPTEL Cloud Computing</h3>
+          <p class="cert-issuer">IIT Kharagpur</p>
+          <p class="cert-date">2024</p>
+        </div>
+        <div class="cert-card" data-animation="fadeInUp">
+          <div class="cert-icon">🌐</div>
+          <h3>Oracle Cloud Infrastructure</h3>
+          <p class="cert-issuer">Oracle Developer Professional</p>
+          <p class="cert-date">2024</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="section-subtitle">I'm always open to new opportunities and interesting projects. Feel free to reach out!</p>
+      
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-item" data-animation="fadeInLeft">
+            <div class="contact-icon">📧</div>
+            <div>
+              <h4>Email</h4>
+              <a href="mailto:shaansaurav633@gmail.com">shaansaurav633@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item" data-animation="fadeInLeft">
+            <div class="contact-icon">📱</div>
+            <div>
+              <h4>Phone</h4>
+              <p>+91 6204566381</p>
+            </div>
+          </div>
+          <div class="contact-item" data-animation="fadeInLeft">
+            <div class="contact-icon">📍</div>
+            <div>
+              <h4>Location</h4>
+              <p>Punjab, India</p>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm" data-animation="fadeInRight">
+          <div class="form-group">
+            <input type="text" id="name" placeholder="Your Full Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" placeholder="Your Email Address" required>
+          </div>
+          <div class="form-group">
+            <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-gradient">Send Message</button>
+          <p id="formMessage" class="form-message"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop">↑</button>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 Shaan Saurav. All rights reserved. | Crafted with ❤️ using HTML, CSS & JavaScript</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
