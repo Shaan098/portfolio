@@ -13,15 +13,29 @@ const typewriter = document.getElementById('typewriter');
 let isDarkMode = localStorage.getItem('theme') !== 'light';
 
 // ==================== INITIALIZATION ====================
-window.addEventListener('load', () => {
-  // Hide loading screen
-  if (loadingScreen) {
-    setTimeout(() => {
-      loadingScreen.style.display = 'none';
-    }, 500);
+// Immediately hide loading screen
+document.addEventListener('readystatechange', () => {
+  if (document.readyState === 'interactive' || document.readyState === 'complete') {
+    if (loadingScreen) {
+      loadingScreen.style.opacity = '0';
+      loadingScreen.style.pointerEvents = 'none';
+      setTimeout(() => {
+        loadingScreen.style.display = 'none';
+      }, 300);
+    }
+    initAll();
   }
-  
-  initAll();
+});
+
+// Also hide on load as backup
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    if (loadingScreen) {
+      loadingScreen.style.opacity = '0';
+      loadingScreen.style.pointerEvents = 'none';
+      loadingScreen.style.display = 'none';
+    }
+  }, 100);
 });
 
 function initAll() {
@@ -64,16 +78,16 @@ function initTheme() {
   
   if (!isDarkMode) {
     document.body.classList.add('light-mode');
-    themeToggle.textContent = '🌙';
+    themeToggle.textContent = '🌙 Dark';
   } else {
-    themeToggle.textContent = '☀️';
+    themeToggle.textContent = '☀️ Light';
   }
 
   themeToggle.addEventListener('click', () => {
     isDarkMode = !isDarkMode;
     document.body.classList.toggle('light-mode');
     localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-    themeToggle.textContent = isDarkMode ? '☀️' : '🌙';
+    themeToggle.textContent = isDarkMode ? '☀️ Light' : '🌙 Dark';
   });
 }
 
@@ -102,40 +116,12 @@ function initScrollEffects() {
 }
 
 // ==================== TYPEWRITER EFFECT ====================
-const typewriterTexts = ['Full Stack Developer', 'Problem Solver', 'CSE Student', 'Tech Enthusiast'];
-let textIndex = 0;
-let charIndex = 0;
-
-function type() {
-  if (!typewriter) return;
-  
-  const text = typewriterTexts[textIndex];
-  typewriter.textContent = text.substring(0, charIndex) + '|';
-  charIndex++;
-
-  if (charIndex > text.length) {
-    setTimeout(() => {
-      charIndex = 0;
-      textIndex = (textIndex + 1) % typewriterTexts.length;
-      typewriter.textContent = '';
-      type();
-    }, 2000);
-  } else {
-    setTimeout(type, 50);
-  }
-}
-
 function initTypewriter() {
+  // Typewriter text already displayed in HTML, no animation needed
   if (!typewriter) return;
-  
-  typewriter.textContent = typewriterTexts[0] + '|';
-  charIndex = typewriterTexts[0].length;
-  setTimeout(() => {
-    charIndex = 0;
-    textIndex = 1;
-    typewriter.textContent = '';
-    type();
-  }, 2000);
+  if (!typewriter.textContent) {
+    typewriter.textContent = 'Full Stack Developer | Problem Solver | CSE Student';
+  }
 }
 
 // ==================== MOBILE MENU ====================
