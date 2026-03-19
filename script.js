@@ -13,24 +13,55 @@ const typewriter = document.getElementById('typewriter');
 let isDarkMode = localStorage.getItem('theme') !== 'light';
 
 // ==================== INITIALIZATION ====================
-document.addEventListener('DOMContentLoaded', () => {
-  setTimeout(() => {
-    loadingScreen.classList.add('hidden');
-  }, 1500);
-
-  initTheme();
-  initNavbar();
-  initScrollEffects();
-  initTypewriter();
-  initMobileMenu();
-  initScrollToLinks();
-  initBackToTop();
-  initContactForm();
-  initAnimationOnScroll();
+window.addEventListener('load', () => {
+  // Hide loading screen
+  if (loadingScreen) {
+    setTimeout(() => {
+      loadingScreen.style.display = 'none';
+    }, 500);
+  }
+  
+  initAll();
 });
+
+function initAll() {
+  try {
+    initTheme();
+  } catch (e) { console.log('Theme init error:', e); }
+  
+  try {
+    initNavbar();
+  } catch (e) { console.log('Navbar init error:', e); }
+  
+  try {
+    initScrollEffects();
+  } catch (e) { console.log('Scroll init error:', e); }
+  
+  try {
+    initTypewriter();
+  } catch (e) { console.log('Typewriter init error:', e); }
+  
+  try {
+    initMobileMenu();
+  } catch (e) { console.log('Mobile menu init error:', e); }
+  
+  try {
+    initScrollToLinks();
+  } catch (e) { console.log('Scroll to links init error:', e); }
+  
+  try {
+    initBackToTop();
+  } catch (e) { console.log('Back to top init error:', e); }
+  
+  try {
+    if (contactForm) initContactForm();
+  } catch (e) { console.log('Contact form init error:', e); }
+}
 
 // ==================== THEME TOGGLE ====================
 function initTheme() {
+  if (!themeToggle) return;
+  
   if (!isDarkMode) {
     document.body.classList.add('light-mode');
     themeToggle.textContent = '🌙';
@@ -48,6 +79,8 @@ function initTheme() {
 
 // ==================== NAVBAR SCROLL EFFECT ====================
 function initNavbar() {
+  if (!navbar) return;
+  
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
       navbar.classList.add('scrolled');
@@ -59,6 +92,8 @@ function initNavbar() {
 
 // ==================== SCROLL PROGRESS ====================
 function initScrollEffects() {
+  if (!scrollProgress) return;
+  
   window.addEventListener('scroll', () => {
     const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
     const scrolled = (window.scrollY / scrollHeight) * 100;
@@ -67,17 +102,13 @@ function initScrollEffects() {
 }
 
 // ==================== TYPEWRITER EFFECT ====================
-const typewriterTexts = [
-  'Full Stack Developer',
-  'Problem Solver',
-  'CSE Student',
-  'Tech Enthusiast'
-];
-
+const typewriterTexts = ['Full Stack Developer', 'Problem Solver', 'CSE Student', 'Tech Enthusiast'];
 let textIndex = 0;
 let charIndex = 0;
 
 function type() {
+  if (!typewriter) return;
+  
   const text = typewriterTexts[textIndex];
   typewriter.textContent = text.substring(0, charIndex) + '|';
   charIndex++;
@@ -95,6 +126,8 @@ function type() {
 }
 
 function initTypewriter() {
+  if (!typewriter) return;
+  
   typewriter.textContent = typewriterTexts[0] + '|';
   charIndex = typewriterTexts[0].length;
   setTimeout(() => {
@@ -107,6 +140,8 @@ function initTypewriter() {
 
 // ==================== MOBILE MENU ====================
 function initMobileMenu() {
+  if (!mobileMenuBtn || !navLinks) return;
+  
   mobileMenuBtn.addEventListener('click', () => {
     mobileMenuBtn.classList.toggle('active');
     navLinks.classList.toggle('active');
@@ -135,6 +170,8 @@ function initScrollToLinks() {
 
 // ==================== BACK TO TOP ====================
 function initBackToTop() {
+  if (!backToTop) return;
+  
   window.addEventListener('scroll', () => {
     if (window.scrollY > 300) {
       backToTop.classList.add('show');
@@ -150,6 +187,8 @@ function initBackToTop() {
 
 // ==================== CONTACT FORM ====================
 function initContactForm() {
+  if (!contactForm) return;
+  
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
@@ -173,30 +212,12 @@ function initContactForm() {
 
 function showFormMessage(msg, type) {
   const formMessage = document.getElementById('formMessage');
+  if (!formMessage) return;
+  
   formMessage.textContent = msg;
   formMessage.className = 'form-message ' + type;
   
   setTimeout(() => {
     formMessage.className = 'form-message';
   }, 5000);
-}
-
-// ==================== ANIMATION ON SCROLL ====================
-function initAnimationOnScroll() {
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.animation = entry.target.dataset.animation || 'fadeInUp 0.6s ease both';
-      }
-    });
-  }, observerOptions);
-
-  document.querySelectorAll('[data-animation]').forEach(el => {
-    observer.observe(el);
-  });
 }
