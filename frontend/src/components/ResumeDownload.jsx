@@ -5,8 +5,8 @@ import { motion } from 'framer-motion';
 const ResumeDownload = () => {
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/resume.pdf';
-    link.download = 'Shaan_Saurav_Resume.pdf';
+    link.href = '/myfinalcv.pdf';
+    link.download = 'frontend/src/components/myfinalcv.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

@@ -40,15 +40,38 @@ const ChatBot = () => {
 
   return (
     <>
-      {/* Chat Button */}
-      <motion.button
-        onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-8 right-8 p-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 z-40"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
+      {/* Chat Button - Floating Action Button */}
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ type: 'spring', stiffness: 100, delay: 0.5 }}
+        className="fixed bottom-8 right-8 z-50"
       >
-        <FiMessageCircle size={24} />
-      </motion.button>
+        <motion.button
+          onClick={() => setIsOpen(!isOpen)}
+          animate={{ y: [0, -10, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          whileHover={{ scale: 1.15 }}
+          whileTap={{ scale: 0.95 }}
+          className="relative p-5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 group"
+        >
+          <FiMessageCircle size={28} className="text-white" />
+          
+          {/* Pulsing background effect */}
+          <motion.div
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full opacity-30"
+            style={{ zIndex: -1 }}
+          />
+          
+          {/* Tooltip */}
+          <div className="absolute bottom-full right-0 mb-3 bg-gray-900 text-white px-4 py-2 rounded-lg text-sm whitespace-nowrap shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+            Chat with me!
+            <div className="absolute top-full right-6 w-2 h-2 bg-gray-900 transform rotate-45"></div>
+          </div>
+        </motion.button>
+      </motion.div>
 
       {/* Chat Window */}
       {isOpen && (
