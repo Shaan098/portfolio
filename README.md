@@ -186,4 +186,5 @@ This portfolio is open source. Feel free to use it as a template for your own po
 Built with ❤️ using React and Tailwind CSS
 
 ---
+
 **Happy Coding! 🚀**
